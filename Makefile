@@ -265,6 +265,7 @@ artifacts/codeception:
 .PHONY: ci-extract-artifacts
 ci-extract-artifacts: artifacts/codeception
 	@docker cp $(shell $(COMPOSE_ENV) docker-compose ps -q php-fpm):/app/source/tests/_output/. $^
+	@docker cp $(shell $(COMPOSE_ENV) docker-compose ps -q php-fpm):/app/source/public/wp-content/plugins/planet4-plugin-gutenberg-blocks/assets/build/css_vars_merged.json $^
 	@echo Extracted artifacts into $^
 
 .PHONY: ci-copyimages
